@@ -5,9 +5,8 @@ import cloud from './assets/cloud.png';
 
 
 function App() {
-    const iterations = 1000;
-
-    const background1 = useWebAnimations({
+    const iterations = 10000;
+    const backgroundAnimationOptions = {
         keyframes: [
             {transform: 'translateX(100%)'},
             {transform: 'translateX(-100%)'},
@@ -17,32 +16,8 @@ function App() {
             duration: 36000,
             iterations
         },
-    });
-
-    const background2 = useWebAnimations({
-        keyframes: [
-            {transform: 'translateX(100%)'},
-            {transform: 'translateX(-100%)'},
-        ],
-        animationOptions: {
-            duration: 36000,
-            iterations
-        },
-    });
-
-    //background3 is the cloud
-    const background3 = useWebAnimations({
-        keyframes: [
-            {transform: 'translateX(100%)'},
-            {transform: 'translateX(-100%)'},
-        ],
-        animationOptions: {
-            duration: 70000,
-            iterations
-        },
-    });
-
-    const foreground1 = useWebAnimations({
+    }
+    const foregroundAnimationOptions = {
         keyframes: [
             {transform: 'translateX(100%)'},
             {transform: 'translateX(-100%)'},
@@ -51,18 +26,13 @@ function App() {
             duration: 12000,
             iterations
         },
-    });
+    }
+    const background1 = useWebAnimations(backgroundAnimationOptions);
+    const background2 = useWebAnimations(backgroundAnimationOptions);
+    const background3 = useWebAnimations({...backgroundAnimationOptions, animationOptions: {duration: 70000}});
 
-    const foreground2 = useWebAnimations({
-        keyframes: [
-            {transform: 'translateX(100%)'},
-            {transform: 'translateX(-100%)'},
-        ],
-        animationOptions: {
-            duration: 12000,
-            iterations
-        },
-    });
+    const foreground1 = useWebAnimations(foregroundAnimationOptions);
+    const foreground2 = useWebAnimations(foregroundAnimationOptions);
 
     const redQueen_alice = useWebAnimations({
         keyframes: [
